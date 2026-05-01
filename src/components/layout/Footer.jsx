@@ -15,6 +15,7 @@ const footerLinks = {
   "About Us": [
     { label: "Why TOPAZ?", href: "/about/why-topaz" },
     { label: "Our Partners", href: "/about/partners" },
+    { label: "Sustainability", href: "/about/sustainability" },
   ],
   "Contact": [
     { label: "Contact Us", href: "/contact" },
@@ -57,7 +58,7 @@ export default function Footer() {
             <img
               src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/1b2f73a00_TTGFinalLogo_completely_white.png"
               alt="TOPAZ Technology Group"
-              className="h-12 w-auto mb-4"
+              className="h-16 w-auto mb-4"
             />
             <p className="text-white/60 font-body text-sm leading-relaxed mb-6">
               Innovation. Integration. Excellence. Delivering enterprise-grade AV solutions for the modern business.
@@ -133,10 +134,8 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm font-body">
-            © {new Date().getFullYear()} TOPAZ Technology Group Ltd. All rights reserved.
+            © 2005–2026 TOPAZ Technology Group Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-          </div>
         </div>
       </div>
     </footer>

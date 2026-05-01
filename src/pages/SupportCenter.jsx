@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Ticket, MessageCircle, Clock, Shield, CheckCircle, ArrowRight, Send } from "lucide-react";
+import { Ticket, MessageCircle, CheckCircle, ArrowRight, Send } from "lucide-react";
+import { loadAIChat } from "@/lib/loadAIChat";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import PageHero from "../components/shared/PageHero";
 import SectionHeading from "../components/shared/SectionHeading";
+import { base44 } from "@/api/base44Client";
+
+const TO_EMAIL = "sales@topaztechnologygroup.com";
 
 const smaFeatures = [
   "Guarantees support availability per SLA",
@@ -28,8 +32,37 @@ export default function SupportCenter() {
     building: "", room: "", roomAvailability: "", faultDescription: "", message: ""
   });
 
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+
+    const web3Data = new FormData();
+    web3Data.append("access_key", "905536ca-c430-45d9-bc89-9428ad644174");
+    web3Data.append("subject", "New Support Ticket - Topaz Technology Group");
+    web3Data.append("name", `${formData.firstName} ${formData.lastName}`);
+    web3Data.append("email", formData.email);
+    web3Data.append("company", formData.company || "");
+    web3Data.append("phone", formData.phone || "");
+    web3Data.append("building", formData.building || "");
+    web3Data.append("room", formData.room || "");
+    web3Data.append("room_availability", formData.roomAvailability || "");
+    web3Data.append("fault_description", formData.faultDescription || "");
+    web3Data.append("message", formData.message);
+
+    await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: web3Data,
+    });
+
+    setSending(false);
+    setSent(true);
   };
 
   return (
@@ -42,7 +75,7 @@ export default function SupportCenter() {
       />
 
       {/* Support Options */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Get the Help You Need"
@@ -53,10 +86,10 @@ export default function SupportCenter() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all text-center"
+              className="p-8 bg-[#e3dfd7] rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 transition-all text-center"
             >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Ticket className="w-6 h-6 text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-[#637480]/10 flex items-center justify-center mx-auto mb-4">
+                <Ticket className="w-6 h-6 text-[#637480]" />
               </div>
               <h3 className="text-xl font-heading font-semibold mb-2">Submit a Ticket</h3>
               <p className="text-muted-foreground font-body text-sm mb-6">Can't find what you're looking for? Our team is here to help.</p>
@@ -69,23 +102,23 @@ export default function SupportCenter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all text-center"
+              className="p-8 bg-[#e3dfd7] rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 transition-all text-center"
             >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="w-6 h-6 text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-[#637480]/10 flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="w-6 h-6 text-[#637480]" />
               </div>
-              <h3 className="text-xl font-heading font-semibold mb-2">Live Chat</h3>
-              <p className="text-muted-foreground font-body text-sm mb-6">Chat with our support team in real-time for immediate assistance.</p>
-              <span className="inline-flex items-center gap-2 text-primary font-medium font-body text-sm">
-                Start Chat <ArrowRight className="w-4 h-4" />
-              </span>
+              <h3 className="text-xl font-heading font-semibold mb-2">AI Chat</h3>
+              <p className="text-muted-foreground font-body text-sm mb-6">Chat with our AI assistant for instant answers to your support queries.</p>
+              <button onClick={loadAIChat} className="inline-flex items-center gap-2 text-primary font-medium font-body text-sm hover:gap-3 transition-all">
+                Start AI Chat <ArrowRight className="w-4 h-4" />
+              </button>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SMA Benefits */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#e3dfd7] border-y border-[#cdc9c0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <motion.div
@@ -116,21 +149,21 @@ export default function SupportCenter() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-background rounded-2xl border border-border overflow-hidden"
+              className="bg-white rounded-2xl border border-[#cdc9c0] overflow-hidden"
             >
-              <div className="grid grid-cols-3 bg-primary text-primary-foreground font-heading font-semibold text-sm">
+              <div className="grid grid-cols-3 bg-[#637480] text-white font-heading font-semibold text-sm">
                 <div className="p-4">Service Level</div>
                 <div className="p-4 text-center">Premium</div>
                 <div className="p-4 text-center">Expedited</div>
               </div>
               {slaTable.map((row, i) => (
-                <div key={row.feature} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-background" : "bg-card"}`}>
+                <div key={row.feature} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-white" : "bg-[#f5f2ee]"}`}>
                   <div className="p-4 font-medium font-body text-foreground">{row.feature}</div>
                   <div className="p-4 text-center font-body text-muted-foreground">{row.premium}</div>
                   <div className="p-4 text-center font-body text-muted-foreground">{row.expedited}</div>
                 </div>
               ))}
-              <div className="p-4 bg-primary/5 text-xs text-muted-foreground font-body text-center">
+              <div className="p-4 bg-[#637480]/5 text-xs text-muted-foreground font-body text-center">
                 Custom solutions available — contact us for a personalized quote.
               </div>
             </motion.div>
@@ -153,13 +186,13 @@ export default function SupportCenter() {
       </section>
 
       {/* Service Support Info */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {[
-              { icon: Clock, title: "Rapid Response", desc: "Exceptional response times regardless of your SLA." },
-              { icon: Shield, title: "UK Coverage", desc: "Comprehensive coverage across London and the UK." },
-              { icon: CheckCircle, title: "Detailed Reports", desc: "Meticulous documentation and SLA performance reports." },
+              { title: "Rapid Response", desc: "Exceptional response times regardless of your SLA." },
+              { title: "UK Coverage", desc: "Comprehensive coverage across London and the UK." },
+              { title: "Detailed Reports", desc: "Meticulous documentation and SLA performance reports." },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -167,9 +200,8 @@ export default function SupportCenter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-6 bg-card rounded-2xl border border-border"
+                className="p-6 bg-[#e3dfd7] rounded-2xl border border-[#cdc9c0]"
               >
-                <item.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="font-heading font-semibold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground font-body">{item.desc}</p>
               </motion.div>
@@ -179,18 +211,30 @@ export default function SupportCenter() {
       </section>
 
       {/* Support Ticket Form */}
-      <section id="support-form" className="py-24 bg-card border-t border-border">
+      <section id="support-form" className="py-24 bg-[#e3dfd7] border-t border-[#cdc9c0]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Raise a Support Ticket"
             description="Fill out the form below and our team will get back to you as soon as possible."
           />
+          {sent ? (
+            <div className="bg-white p-8 rounded-2xl border border-[#cdc9c0] flex flex-col items-center justify-center text-center min-h-[300px] gap-4">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-heading font-semibold text-foreground">Ticket Submitted!</h3>
+              <p className="text-muted-foreground font-body">Thank you. A member of our team will respond to your ticket shortly.</p>
+              <button onClick={() => { setSent(false); setFormData({ firstName: "", lastName: "", company: "", email: "", phone: "", building: "", room: "", roomAvailability: "", faultDescription: "", message: "" }); }} className="text-sm text-primary underline font-body">
+                Raise another ticket
+              </button>
+            </div>
+          ) : (
           <motion.form
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 bg-background p-8 rounded-2xl border border-border"
-            onSubmit={(e) => e.preventDefault()}
+            className="space-y-6 bg-white p-8 rounded-2xl border border-[#cdc9c0]"
+            onSubmit={handleSubmit}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -240,11 +284,12 @@ export default function SupportCenter() {
               <Label className="font-body text-sm mb-2 block">Your Message *</Label>
               <Textarea rows={5} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} placeholder="Describe your issue in detail..." />
             </div>
-            <Button className="w-full bg-primary text-primary-foreground rounded-full py-6 font-body font-medium text-base">
+            <Button type="submit" disabled={sending} className="w-full bg-[#637480] text-white rounded-full py-6 font-body font-medium text-base hover:bg-[#526370]">
               <Send className="w-4 h-4 mr-2" />
-              Raise Support Ticket
+              {sending ? "Submitting..." : "Raise Support Ticket"}
             </Button>
           </motion.form>
+          )}
         </div>
       </section>
     </>

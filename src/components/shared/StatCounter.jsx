@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 const stats = [
-  { value: 20, suffix: "+", label: "Years In Business" },
+  { value: 21, suffix: "+", label: "Years In Business" },
   { value: 3000, suffix: "+", label: "Projects Delivered" },
-  { value: 750, suffix: "+", label: "Meeting Rooms Supported" },
+  { value: 1000, suffix: "+", label: "Meeting Rooms Supported" },
   { value: 99.7, suffix: "%", label: "Client Satisfaction", decimals: 1 },
   { value: 24, suffix: "/5", label: "Global Help Desk" },
 ];
@@ -31,9 +31,13 @@ function AnimatedNumber({ target, suffix, decimals = 0, light, duration = 2000 }
     requestAnimationFrame(step);
   }, [inView, target, duration, decimals]);
 
+  const formatted = decimals > 0
+    ? display.toFixed(decimals)
+    : Math.round(display).toLocaleString();
+
   return (
     <span ref={ref} className={`text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-2 block ${light ? "text-white" : "text-[#637480]"}`}>
-      {decimals > 0 ? display.toFixed(decimals) : Math.round(display)}{suffix}
+      {formatted}{suffix}
     </span>
   );
 }

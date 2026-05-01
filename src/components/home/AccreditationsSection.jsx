@@ -1,13 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, Shield, Star, Gem } from "lucide-react";
 import SectionHeading from "../shared/SectionHeading";
 
+// To change accreditation images, update the `image` URL for each entry below.
 const accreditations = [
-  { icon: Award, title: "CTS-D Certified", description: "AVIXA Certified Technology Specialist – Design" },
-  { icon: Shield, title: "Safe Contractor", description: "Safe Contractor Approved for health and safety compliance" },
-  { icon: Star, title: "AVIXA Member", description: "Active member of the Audiovisual and Integrated Experience Association" },
-  { icon: Gem, title: "Edge AV Member", description: "Recognized for excellence in delivering cutting-edge AV solutions and exceptional customer service" },
+  {
+    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/cc12dce27_CTS-D.png",
+    title: "CTS-D Certified",
+    description: "AVIXA Certified Technology Specialist – Design",
+  },
+  {
+    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/f89291428_SafeCon.png",
+    title: "Safe Contractor",
+    description: "Safe Contractor Approved for health and safety compliance",
+  },
+  {
+    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/f2ae317ab_AvixaMember.png",
+    title: "AVIXA Member",
+    description: "Active member of the Audiovisual and Integrated Experience Association",
+  },
+  {
+    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/13e79736c_edgeAV.jpg",
+    title: "Edge AV Member",
+    description: "Recognized for excellence in delivering cutting-edge AV solutions and exceptional customer service",
+  },
 ];
 
 export default function AccreditationsSection() {
@@ -30,8 +46,12 @@ export default function AccreditationsSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center p-8 bg-white rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <acc.icon className="w-6 h-6 text-primary" />
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                <img
+                  src={acc.image}
+                  alt={acc.title}
+                  className={`object-contain ${acc.title === "Edge AV Member" ? "w-full h-full" : "max-w-full max-h-full"}`}
+                />
               </div>
               <h3 className="font-heading font-semibold text-foreground mb-2">{acc.title}</h3>
               <p className="text-sm text-muted-foreground font-body">{acc.description}</p>

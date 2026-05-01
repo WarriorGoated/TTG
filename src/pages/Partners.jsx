@@ -36,6 +36,14 @@ const partnerCategories = [
     ],
   },
   {
+    category: "LED Technology",
+    partners: [
+      { name: "Unilumin", type: "LED Technology", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/3656c1dbc_Unilumin-500x500.png" },
+      { name: "Leyard", type: "LED Displays", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/f2ad055af_dual-vertical-full-color-1-01-1.png" },
+      { name: "Hisense", type: "LED Displays", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/7742d5d2a_hisense-logo-png_seeklogo-449490.png" },
+    ],
+  },
+  {
     category: "Video Conferencing Devices",
     partners: [
       { name: "Logitech", type: "Video Conferencing", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/3a0282d66_Logitech_logosvg.png" },
@@ -47,18 +55,12 @@ const partnerCategories = [
   {
     category: "AV over IP & Control",
     partners: [
+      { name: "QSC / Q-SYS", type: "AV over IP", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/26c0673a4_qsc-logo.png" },
       { name: "Blustream", type: "AV over IP", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/9baa9f54e_Blustream_pzBdeJG.png" },
       { name: "Inogeni", type: "Video Connectivity", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/6a0ccadef_Inogen-Logo-PNG-SVG-Vector-01.png" },
       { name: "Lightware", type: "AV over IP", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/ce230ad5d_lightware-logo-png-transparent.png" },
       { name: "Extron", type: "AV Control", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/984f49f49_Extron-Logo.png" },
       { name: "Crestron", type: "AV Control", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/afc0814d0_image.png" },
-    ],
-  },
-  {
-    category: "LED Technology",
-    partners: [
-      { name: "Unilumin", type: "LED Technology", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/3656c1dbc_Unilumin-500x500.png" },
-      { name: "Leyard", type: "LED Displays", logo: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/f2ad055af_dual-vertical-full-color-1-01-1.png" },
     ],
   },
 ];
@@ -100,7 +102,7 @@ export default function Partners() {
         image="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/8c1ee1ad7_generated_692ce45d.png"
       />
 
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {partnerCategories.map((cat, catIdx) => (
             <div key={cat.category} className="mb-16 last:mb-0">
@@ -121,7 +123,7 @@ export default function Partners() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-center"
+                    className="group p-6 bg-white rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300 text-center"
                   >
                     <PartnerLogo partner={partner} />
                     <h4 className="font-heading font-semibold text-foreground text-sm mb-1">
@@ -143,15 +145,15 @@ export default function Partners() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg md:text-xl font-body text-foreground/70 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl font-body text-[#637480] max-w-3xl mx-auto leading-relaxed"
           >
-            We work exclusively with <span className="font-semibold text-foreground">industry-leading manufacturers</span> — ensuring every solution we deliver is built on proven, enterprise-grade technology that you can trust.
+            We work exclusively with <span className="font-semibold text-[#637480]">industry-leading manufacturers</span> — ensuring every solution we deliver is built on proven, enterprise-grade technology that you can trust.
           </motion.p>
         </div>
       </section>
 
       {/* Become a Partner CTA */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-[#637480]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

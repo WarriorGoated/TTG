@@ -1,22 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Package, Truck, Wrench, CheckCircle, Monitor, Wifi, Shield, Clock } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 
 const processSteps = [
-  { icon: Package, title: "Procurement", description: "We source the best equipment from our extensive network of 25+ technology partners, ensuring quality and value." },
-  { icon: Truck, title: "Logistics", description: "Coordinated delivery and staging to minimise disruption to your operations, with flexible scheduling options." },
-  { icon: Wrench, title: "Installation", description: "Our certified technicians handle every aspect of installation, from cable management to final system integration." },
-  { icon: CheckCircle, title: "Commissioning", description: "Comprehensive testing, configuration, and user training to ensure everything works perfectly from day one." },
+  { title: "Procurement", description: "We source the best equipment from our extensive network of 25+ technology partners, ensuring quality and value." },
+  { title: "Logistics", description: "Coordinated delivery and staging to minimise disruption to your operations, with flexible scheduling options." },
+  { title: "Installation", description: "Our certified technicians handle every aspect of installation, from cable management to final system integration." },
+  { title: "Commissioning", description: "Comprehensive testing, configuration, and user training to ensure everything works perfectly from day one." },
 ];
 
 const whatWeInstall = [
-  { icon: Monitor, title: "Display Systems", desc: "LED walls, commercial displays, projectors, and interactive screens." },
-  { icon: Wifi, title: "Conferencing", desc: "Video conferencing rooms, Microsoft Teams, Zoom, and Google Meet solutions." },
-  { icon: Shield, title: "Control Systems", desc: "Crestron, Extron, and QSC control and automation systems." },
-  { icon: Clock, title: "Audio", desc: "Professional sound systems, microphones, DSP, and acoustic solutions." },
+  { title: "Display Systems", desc: "LED walls, commercial displays, projectors, and interactive screens." },
+  { title: "Conferencing", desc: "Video conferencing rooms, Microsoft Teams, Zoom, and Google Meet solutions." },
+  { title: "Control Systems", desc: "Crestron, Extron, and QSC control and automation systems." },
+  { title: "Audio", desc: "Professional sound systems, microphones, DSP, and acoustic solutions." },
 ];
 
 export default function SupplyInstall() {
@@ -30,7 +30,7 @@ export default function SupplyInstall() {
       />
 
       {/* Process */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             badge="Our Process"
@@ -46,16 +46,13 @@ export default function SupplyInstall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative p-8 bg-card rounded-2xl border border-border"
+                className={`relative p-8 rounded-2xl border border-[#cdc9c0] ${i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"}`}
               >
-                <span className="absolute top-4 right-4 text-5xl font-heading font-bold text-primary/5">
+                <span className={`absolute top-4 right-4 text-5xl font-heading font-bold ${i % 2 === 1 ? "text-white/10" : "text-primary/5"}`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <step.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-heading font-semibold text-foreground mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">{step.description}</p>
+                <h3 className={`text-lg font-heading font-semibold mb-2 ${i % 2 === 1 ? "text-white" : "text-foreground"}`}>{step.title}</h3>
+                <p className={`text-sm font-body leading-relaxed ${i % 2 === 1 ? "text-white/70" : "text-muted-foreground"}`}>{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -71,13 +68,13 @@ export default function SupplyInstall() {
             viewport={{ once: true }}
             className="text-lg md:text-xl font-body text-foreground/70 max-w-3xl mx-auto leading-relaxed"
           >
-            With <span className="font-semibold text-foreground">25+ technology partners</span> and a team of certified engineers, TOPAZ delivers installations that are completed on time, on budget, and to the highest quality standards.
+            With <span className="font-semibold text-foreground">strong relationships with the worlds leading technology manufacturers</span> and a team of certified engineers, TOPAZ delivers installations that are completed on time, on budget, and to the highest quality standards.
           </motion.p>
         </div>
       </section>
 
       {/* What We Install */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#e3dfd7] border-y border-[#cdc9c0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             badge="Capabilities"
@@ -92,15 +89,10 @@ export default function SupplyInstall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 bg-background rounded-2xl border border-border"
+                className="p-6 bg-white rounded-2xl border border-[#cdc9c0]"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground font-body">{item.desc}</p>
-                </div>
+                <h3 className="font-heading font-semibold text-foreground mb-1">{item.title}</h3>
+                <p className="text-sm text-muted-foreground font-body">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -108,7 +100,7 @@ export default function SupplyInstall() {
       </section>
 
       {/* Why Topaz for Supply & Install */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -128,11 +120,12 @@ export default function SupplyInstall() {
               <ul className="space-y-4">
                 {[
                   "3000+ projects successfully delivered",
-                  "25+ industry-leading technology partners",
-                  "CTS-D certified design and installation team",
+                  "Industry-leading technology partners",
+                  "In house certified design and installation team",
                   "Minimal disruption to your daily operations",
                   "Full project management from start to finish",
                   "Comprehensive testing and quality assurance",
+                  "Fully managed turn-key solutions",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 font-body text-foreground">
                     <CheckCircle className="w-5 h-5 text-primary shrink-0" />
@@ -146,7 +139,7 @@ export default function SupplyInstall() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-[#637480]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
             Need a Professional Installation?

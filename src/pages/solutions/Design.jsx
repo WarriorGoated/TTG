@@ -1,17 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Eye, PenTool, Layers, Monitor, FileText, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 
 const designProcess = [
-  { icon: Users, title: "Consultation", description: "We meet with your stakeholders to understand your vision, workflow, and technical requirements." },
-  { icon: Eye, title: "Site Survey", description: "Our engineers conduct comprehensive surveys to assess space, infrastructure, and environmental factors." },
-  { icon: PenTool, title: "System Design", description: "CTS-D certified designers create detailed schematics, equipment schedules, and system architecture documents." },
-  { icon: Layers, title: "3D Visualisation", description: "Interactive 3D models let you visualise the end result before any equipment is ordered or installed." },
-  { icon: FileText, title: "Documentation", description: "Complete technical documentation including rack layouts, cable schedules, and integration specifications." },
-  { icon: Monitor, title: "Design Review", description: "Collaborative review sessions ensure every detail aligns with your objectives before we proceed." },
+  { title: "Consultation", description: "We meet with your stakeholders to understand your vision, workflow, and technical requirements." },
+  { title: "Site Survey", description: "Our engineers conduct comprehensive surveys to assess space, infrastructure, and environmental factors." },
+  { title: "System Design", description: "CTS-D certified designers create detailed schematics, equipment schedules, and system architecture documents." },
+  { title: "3D Visualisation", description: "Interactive 3D models let you visualise the end result before any equipment is ordered or installed." },
+  { title: "Documentation", description: "Complete technical documentation including rack layouts, cable schedules, and integration specifications." },
+  { title: "Design Review", description: "Collaborative review sessions ensure every detail aligns with your objectives before we proceed." },
 ];
 
 const capabilities = [
@@ -36,7 +36,7 @@ export default function Design() {
       />
 
       {/* Design Process */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             badge="Our Process"
@@ -52,16 +52,11 @@ export default function Design() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className={`p-8 rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300 ${i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"}`}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <step.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-xs font-bold text-primary/50 font-body">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <h3 className="text-lg font-heading font-semibold text-foreground mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">{step.description}</p>
+                <span className={`text-xs font-bold font-body block mb-3 ${i % 2 === 1 ? "text-white/50" : "text-primary/50"}`}>{String(i + 1).padStart(2, "0")}</span>
+                <h3 className={`text-lg font-heading font-semibold mb-2 ${i % 2 === 1 ? "text-white" : "text-foreground"}`}>{step.title}</h3>
+                <p className={`text-sm font-body leading-relaxed ${i % 2 === 1 ? "text-white/70" : "text-muted-foreground"}`}>{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -77,13 +72,13 @@ export default function Design() {
             viewport={{ once: true }}
             className="text-lg md:text-xl font-body text-foreground/70 max-w-3xl mx-auto leading-relaxed"
           >
-            Every TOPAZ design is produced by <span className="font-semibold text-foreground">AVIXA CTS-D certified engineers</span> — the industry's gold standard for AV system design. We've delivered over <span className="font-semibold text-foreground">3,000 projects</span> across the UK and internationally.
+            Every TOPAZ design is produced by our<span className="font-semibold text-foreground">qualified solutions architects</span> We've delivered over <span className="font-semibold text-foreground">3,000 projects</span> across the UK and internationally.
           </motion.p>
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#e3dfd7] border-y border-[#cdc9c0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -122,7 +117,7 @@ export default function Design() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-[#637480]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
             Ready to Start Your Design Project?

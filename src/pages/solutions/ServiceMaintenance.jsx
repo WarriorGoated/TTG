@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Clock, Phone, Wrench, BarChart, CheckCircle, Headphones, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import PageHero from "../../components/shared/PageHero";
 import SectionHeading from "../../components/shared/SectionHeading";
 
@@ -13,12 +13,12 @@ const slaTable = [
 ];
 
 const smaFeatures = [
-  { icon: Shield, title: "Guaranteed SLA", desc: "Guarantees support availability per your agreed service level." },
-  { icon: Clock, title: "No Surprise Costs", desc: "Avoids unbudgeted call-out costs with fixed contract pricing." },
-  { icon: Wrench, title: "Proactive Maintenance", desc: "Increases lifespan of equipment through preventative maintenance visits." },
-  { icon: Phone, title: "Fast Response", desc: "Ensures minimum downtime with industry-leading response times." },
-  { icon: BarChart, title: "Performance Reports", desc: "Detailed service reports with SLA performance metrics and insights." },
-  { icon: Headphones, title: "24/5 Help Desk", desc: "Global help desk support available around the clock, five days a week." },
+  { title: "Guaranteed SLA", desc: "Guarantees support availability per your agreed service level." },
+  { title: "No Surprise Costs", desc: "Avoids unbudgeted call-out costs with fixed contract pricing." },
+  { title: "Proactive Maintenance", desc: "Increases lifespan of equipment through preventative maintenance visits." },
+  { title: "Fast Response", desc: "Ensures minimum downtime with industry-leading response times." },
+  { title: "Performance Reports", desc: "Detailed service reports with SLA performance metrics and insights." },
+  { title: "24/5 Help Desk", desc: "Global help desk support available around the clock, five days a week." },
 ];
 
 export default function ServiceMaintenance() {
@@ -32,7 +32,7 @@ export default function ServiceMaintenance() {
       />
 
       {/* SMA Benefits */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             badge="Our Contracts"
@@ -48,13 +48,10 @@ export default function ServiceMaintenance() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className={`p-8 rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300 ${i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"}`}
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <feat.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-heading font-semibold text-foreground mb-2">{feat.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">{feat.desc}</p>
+                <h3 className={`text-lg font-heading font-semibold mb-2 ${i % 2 === 1 ? "text-white" : "text-foreground"}`}>{feat.title}</h3>
+                <p className={`text-sm font-body leading-relaxed ${i % 2 === 1 ? "text-white/70" : "text-muted-foreground"}`}>{feat.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -76,7 +73,7 @@ export default function ServiceMaintenance() {
       </section>
 
       {/* SLA Table */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#e3dfd7] border-y border-[#cdc9c0]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Service Level Comparison"
@@ -86,7 +83,7 @@ export default function ServiceMaintenance() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-background rounded-2xl border border-border overflow-hidden"
+            className="bg-white rounded-2xl border border-[#cdc9c0] overflow-hidden"
           >
             <div className="grid grid-cols-3 bg-primary text-primary-foreground font-heading font-semibold text-sm">
               <div className="p-5">Service Level</div>
@@ -94,7 +91,7 @@ export default function ServiceMaintenance() {
               <div className="p-5 text-center">Expedited</div>
             </div>
             {slaTable.map((row, i) => (
-              <div key={row.feature} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-background" : "bg-card"}`}>
+              <div key={row.feature} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-white" : "bg-[#f5f2ee]"}`}>
                 <div className="p-5 font-medium font-body text-foreground">{row.feature}</div>
                 <div className="p-5 text-center font-body text-muted-foreground">{row.premium}</div>
                 <div className="p-5 text-center font-body text-muted-foreground">{row.expedited}</div>
@@ -108,7 +105,7 @@ export default function ServiceMaintenance() {
       </section>
 
       {/* Service Excellence */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -149,7 +146,7 @@ export default function ServiceMaintenance() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-[#637480]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
             Keep Your Systems Running at Peak Performance

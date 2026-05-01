@@ -10,9 +10,9 @@ import { base44 } from "@/api/base44Client";
 
 const ContactEnquiry = base44.entities.ContactEnquiry;
 
+
 const contactInfo = [
-  { icon: MapPin, title: "Address", value: "30 Crosby Road North, Waterloo, Liverpool, L22 4QF" },
-  { icon: Mail, title: "Email", value: "info@topaztechnologygroup.com" },
+  { icon: Mail, title: "Email", value: "sales@topaztechnologygroup.com" },
   { icon: Clock, title: "Help Desk", value: "24/5 Global Support" },
 ];
 
@@ -27,6 +27,21 @@ export default function Contact() {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     setSending(true);
+
+    const formData = new FormData();
+    formData.append("access_key", "f7c34a6f-3480-4a66-87fd-ecd5bae318b2");
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("company", form.company || "");
+    formData.append("phone", form.phone || "");
+    formData.append("message", form.message);
+    formData.append("subject", "New Contact Enquiry - Topaz Technology Group");
+
+    await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
     await ContactEnquiry.create({
       name: form.name,
       email: form.email,
@@ -35,6 +50,7 @@ export default function Contact() {
       message: form.message,
       status: "new",
     });
+
     setSending(false);
     setSent(true);
   };
@@ -48,7 +64,7 @@ export default function Contact() {
         image="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/36d9858bb_generated_be132e42.png"
       />
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Contact Info */}
@@ -80,14 +96,7 @@ export default function Contact() {
                 ))}
               </div>
 
-              <div className="p-6 bg-card rounded-2xl border border-border">
-                <h4 className="font-heading font-semibold text-foreground mb-2">Company Information</h4>
-                <p className="text-sm text-muted-foreground font-body">
-                  TOPAZ Technology Group Ltd<br />
-                  Company No. 13061763<br />
-                  Registered in England and Wales
-                </p>
-              </div>
+
             </div>
 
             {/* Form */}
@@ -98,7 +107,7 @@ export default function Contact() {
               className="lg:col-span-3"
             >
               {sent ? (
-                <div className="space-y-6 bg-card p-8 rounded-2xl border border-border flex flex-col items-center justify-center text-center min-h-[400px]">
+                <div className="space-y-6 bg-white p-8 rounded-2xl border border-[#cdc9c0] flex flex-col items-center justify-center text-center min-h-[400px]">
                   <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
@@ -109,7 +118,7 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form className="space-y-6 bg-card p-8 rounded-2xl border border-border" onSubmit={handleSubmit}>
+                <form className="space-y-6 bg-white p-8 rounded-2xl border border-[#cdc9c0]" onSubmit={handleSubmit}>
                   <h3 className="text-xl font-heading font-semibold text-foreground mb-2">Send Us a Message</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -146,7 +155,7 @@ export default function Contact() {
         </div>
       </section>
       {/* Locations */}
-      <section id="locations" className="py-24 bg-[#e3dfd7]">
+      <section id="locations" className="py-24 bg-[#e3dfd7] border-t border-[#cdc9c0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-semibold uppercase tracking-wider mb-4 font-body">
@@ -160,9 +169,9 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm"
+              className="bg-white rounded-2xl border border-[#cdc9c0] overflow-hidden shadow-sm"
             >
-              <div className="p-6 border-b border-border">
+              <div className="p-6 border-b border-[#cdc9c0]">
                 <h3 className="text-lg font-heading font-bold text-foreground mb-1">Head Office</h3>
                 <p className="text-sm text-muted-foreground font-body">166 Lord Street, Southport, PR9 0QA, United Kingdom</p>
               </div>
@@ -182,9 +191,9 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm"
+              className="bg-white rounded-2xl border border-[#cdc9c0] overflow-hidden shadow-sm"
             >
-              <div className="p-6 border-b border-border">
+              <div className="p-6 border-b border-[#cdc9c0]">
                 <h3 className="text-lg font-heading font-bold text-foreground mb-1">London Office</h3>
                 <p className="text-sm text-muted-foreground font-body">Lower Farm Road, Effingham, Leatherhead, United Kingdom</p>
               </div>

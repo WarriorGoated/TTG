@@ -16,6 +16,7 @@ import Design from './pages/solutions/Design';
 import SupplyInstall from './pages/solutions/SupplyInstall';
 import ServiceMaintenance from './pages/solutions/ServiceMaintenance';
 import AVSolutions from './pages/industries/AVSolutions';
+import Sustainability from './pages/about/Sustainability';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -49,6 +50,7 @@ const AuthenticatedApp = () => {
         <Route path="/solutions/supply-install" element={<SupplyInstall />} />
         <Route path="/solutions/service-maintenance" element={<ServiceMaintenance />} />
         <Route path="/industries/av-solutions" element={<AVSolutions />} />
+        <Route path="/about/sustainability" element={<Sustainability />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>

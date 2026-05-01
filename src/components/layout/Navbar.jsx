@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { loadAIChat } from "@/lib/loadAIChat";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -24,6 +25,7 @@ const navLinks = [
     children: [
       { label: "Why TOPAZ?", href: "/about/why-topaz" },
       { label: "Our Partners", href: "/about/partners" },
+      { label: "Sustainability", href: "/about/sustainability" },
     ],
   },
   {
@@ -47,7 +49,15 @@ function DropdownMenu({ items, isOpen }) {
           className="absolute top-full left-0 mt-2 w-56 bg-card border border-border rounded-xl shadow-xl overflow-hidden z-50"
         >
           {items.map((item) =>
-            item.external ? (
+            item.action === "ai-chat" ? (
+              <button
+                key="ai-chat"
+                onClick={loadAIChat}
+                className="block w-full text-left px-5 py-3 text-sm text-foreground/80 hover:bg-primary/5 hover:text-primary transition-colors font-body"
+              >
+                {item.label}
+              </button>
+            ) : item.external ? (
               <a
                 key={item.href}
                 href={item.href}
@@ -99,7 +109,7 @@ export default function Navbar() {
             <img
               src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/4f32f46e8_TTGFinalLogo_completely_grey.png"
               alt="TOPAZ Technology Group"
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
 
@@ -157,7 +167,15 @@ export default function Navbar() {
                     {link.label}
                   </p>
                   {link.children.map((child) =>
-                    child.external ? (
+                    child.action === "ai-chat" ? (
+                      <button
+                        key="ai-chat"
+                        onClick={loadAIChat}
+                        className="block w-full text-left py-2 text-foreground/80 hover:text-primary transition-colors font-body"
+                      >
+                        {child.label}
+                      </button>
+                    ) : child.external ? (
                       <a
                         key={child.href}
                         href={child.href}
