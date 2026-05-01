@@ -15,7 +15,7 @@ export default function HeroSection() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/src/Video's/TopazMainVideo.mp4" type="video/mp4" />
+          <source src="/TopazMainVideo.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40" />
       </div>
