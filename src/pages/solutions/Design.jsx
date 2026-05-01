@@ -110,7 +110,7 @@ export default function Design() {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/713e0d4ae_generated_89c8ed89.png" alt="AV Design work" className="w-full h-[400px] object-cover" />
+              <img src="/Images/AV-Design.jpg" alt="AV Design work" className="w-full h-[400px] object-contain" />
             </motion.div>
           </div>
         </div>

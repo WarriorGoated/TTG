@@ -28,7 +28,7 @@ export default function ServiceMaintenance() {
         badge="AV Solutions"
         title="Service & Maintenance"
         description="Comprehensive support and maintenance services to keep your systems running smoothly, with fast response times and expert technical assistance."
-        image="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/898af141a_generated_b3a48ee0.png"
+        image="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/898af141a-generated-b3a48ee0.png"
       />
 
       {/* SMA Benefits */}
@@ -76,6 +76,7 @@ export default function ServiceMaintenance() {
       <section className="py-24 bg-[#e3dfd7] border-y border-[#cdc9c0]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <SectionHeading
+            badge="SLA Comparison"
             title="Service Level Comparison"
             description="Choose the support tier that fits your business requirements."
           />
@@ -139,7 +140,7 @@ export default function ServiceMaintenance() {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/898af141a_generated_b3a48ee0.png" alt="Service engineer" className="w-full h-[400px] object-cover" />
+              <img src="/Images/AV-Maintenance.jpg" alt="Service engineer" className="w-full h-[400px] object-cover" />
             </motion.div>
           </div>
         </div>

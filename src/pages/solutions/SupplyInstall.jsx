@@ -109,7 +109,7 @@ export default function SupplyInstall() {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/23ff73efd_generated_501bd931.png" alt="AV Installation" className="w-full h-[400px] object-cover" />
+              <img src="/Images/Craig-Install.png" alt="AV Installation" className="w-full h-[400px] object-cover" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}

@@ -51,7 +51,7 @@ export default function HeroSection() {
           </video>
         ) : (
           <img
-            src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/cee887185_generated_43021732.png"
+            src="/Videos/TopazMainVideo.mp4"
             alt="Modern AV conference room"
             className="w-full h-full object-cover"
           />
