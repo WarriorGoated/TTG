@@ -1,0 +1,71 @@
+import { Toaster } from "@/components/ui/toaster"
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClientInstance } from '@/lib/query-client'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PageNotFound from './lib/PageNotFound';
+import { AuthProvider, useAuth } from '@/lib/AuthContext';
+import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
+import WhyTopaz from './pages/WhyTopaz';
+import Partners from './pages/Partners';
+import SupportCenter from './pages/SupportCenter';
+import Contact from './pages/Contact';
+import Design from './pages/solutions/Design';
+import SupplyInstall from './pages/solutions/SupplyInstall';
+import ServiceMaintenance from './pages/solutions/ServiceMaintenance';
+import AVSolutions from './pages/industries/AVSolutions';
+
+const AuthenticatedApp = () => {
+  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+
+  if (isLoadingPublicSettings || isLoadingAuth) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-background">
+        <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (authError) {
+    if (authError.type === 'user_not_registered') {
+      return <UserNotRegisteredError />;
+    } else if (authError.type === 'auth_required') {
+      navigateToLogin();
+      return null;
+    }
+  }
+
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about/why-topaz" element={<WhyTopaz />} />
+        <Route path="/about/partners" element={<Partners />} />
+        <Route path="/support" element={<SupportCenter />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/solutions/design" element={<Design />} />
+        <Route path="/solutions/supply-install" element={<SupplyInstall />} />
+        <Route path="/solutions/service-maintenance" element={<ServiceMaintenance />} />
+        <Route path="/industries/av-solutions" element={<AVSolutions />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
+    </Routes>
+  );
+};
+
+function App() {
+  return (
+    <AuthProvider>
+      <QueryClientProvider client={queryClientInstance}>
+        <Router>
+          <AuthenticatedApp />
+        </Router>
+        <Toaster />
+      </QueryClientProvider>
+    </AuthProvider>
+  )
+}
+
+export default App
