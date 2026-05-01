@@ -1,61 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Upload, X, Film } from "lucide-react";
-import { base44 } from "@/api/base44Client";
-
-const VIDEO_STORAGE_KEY = "topaz_hero_video_url";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
-  const [videoUrl, setVideoUrl] = useState(() => localStorage.getItem(VIDEO_STORAGE_KEY) || "");
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [showUploader, setShowUploader] = useState(false);
-
-  useEffect(() => {
-    base44.auth.me().then((user) => {
-      if (user?.role === "admin") setIsAdmin(true);
-    }).catch(() => {});
-  }, []);
-
-  const handleUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setUploading(true);
-    const { file_url } = await base44.integrations.Core.UploadFile({ file });
-    setVideoUrl(file_url);
-    localStorage.setItem(VIDEO_STORAGE_KEY, file_url);
-    setUploading(false);
-    setShowUploader(false);
-  };
-
-  const removeVideo = () => {
-    setVideoUrl("");
-    localStorage.removeItem(VIDEO_STORAGE_KEY);
-  };
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        {videoUrl ? (
-          <video
-            key={videoUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src={videoUrl} type="video/mp4" />
-          </video>
-        ) : (
-          <img
-            src="https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/cee887185_generated_43021732.png"
-            alt="Modern AV conference room"
-            className="w-full h-full object-cover"
-          />
-        )}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/src/Video's/TopazMainVideo.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40" />
       </div>
 
@@ -66,47 +27,6 @@ export default function HeroSection() {
           backgroundSize: "60px 60px"
         }} />
       </div>
-
-      {/* Admin Video Upload Controls */}
-      {isAdmin && (
-        <div className="absolute top-24 right-6 z-20 flex flex-col items-end gap-2">
-          {!showUploader ? (
-            <button
-              onClick={() => setShowUploader(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm text-white text-xs rounded-full border border-white/20 hover:bg-black/80 transition-all"
-            >
-              <Film className="w-3.5 h-3.5" />
-              {videoUrl ? "Change Video" : "Upload Hero Video"}
-            </button>
-          ) : (
-            <div className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-2xl p-4 w-72">
-              <div className="flex items-center justify-between mb-3">
-                <p className="text-white text-sm font-semibold">Upload Hero Video</p>
-                <button onClick={() => setShowUploader(false)} className="text-white/60 hover:text-white">
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <p className="text-white/60 text-xs mb-3">Select an .mp4 file from your device. It will be used as the hero background.</p>
-              <label className="flex items-center justify-center gap-2 w-full py-3 bg-white/10 hover:bg-white/20 border border-white/20 border-dashed rounded-xl cursor-pointer transition-all">
-                {uploading ? (
-                  <span className="text-white text-xs">Uploading...</span>
-                ) : (
-                  <>
-                    <Upload className="w-4 h-4 text-white/70" />
-                    <span className="text-white text-xs">Choose MP4 file</span>
-                  </>
-                )}
-                <input type="file" accept="video/mp4,video/*" className="hidden" onChange={handleUpload} disabled={uploading} />
-              </label>
-              {videoUrl && (
-                <button onClick={removeVideo} className="mt-2 w-full text-xs text-red-400 hover:text-red-300 text-center">
-                  Remove current video
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
         <div className="max-w-3xl">
