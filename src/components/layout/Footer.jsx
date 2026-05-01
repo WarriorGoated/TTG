@@ -136,7 +136,6 @@ export default function Footer() {
             © {new Date().getFullYear()} TOPAZ Technology Group Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-white/30 font-body">Company No. 13061763</span>
           </div>
         </div>
       </div>
