@@ -13,9 +13,11 @@ export default function HeroSection() {
   const [showUploader, setShowUploader] = useState(false);
 
   useEffect(() => {
-    base44.auth.me().then((user) => {
-      if (user?.role === "admin") setIsAdmin(true);
-    }).catch(() => {});
+    base44.auth.me()
+      .then((user) => {
+        if (user?.role === "admin") setIsAdmin(true);
+      })
+      .catch(() => {});
   }, []);
 
   const handleUpload = async (e) => {
@@ -50,21 +52,30 @@ export default function HeroSection() {
             <source src={videoUrl} type="video/mp4" />
           </video>
         ) : (
-          <img
-            src="/TopazMainVideo.mp4"
-            alt="Modern AV conference room"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/TopazMainVideo.mp4" type="video/mp4" />
+          </video>
         )}
+
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40" />
       </div>
 
       {/* Decorative grid */}
       <div className="absolute inset-0 opacity-5">
-        <div className="h-full w-full" style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
-        }} />
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
       </div>
 
       {/* Admin Video Upload Controls */}
@@ -82,11 +93,16 @@ export default function HeroSection() {
             <div className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-2xl p-4 w-72">
               <div className="flex items-center justify-between mb-3">
                 <p className="text-white text-sm font-semibold">Upload Hero Video</p>
-                <button onClick={() => setShowUploader(false)} className="text-white/60 hover:text-white">
+                <button
+                  onClick={() => setShowUploader(false)}
+                  className="text-white/60 hover:text-white"
+                >
                   <X className="w-4 h-4" />
                 </button>
               </div>
-              <p className="text-white/60 text-xs mb-3">Select an .mp4 file from your device. It will be used as the hero background.</p>
+              <p className="text-white/60 text-xs mb-3">
+                Select an .mp4 file from your device. It will be used as the hero background.
+              </p>
               <label className="flex items-center justify-center gap-2 w-full py-3 bg-white/10 hover:bg-white/20 border border-white/20 border-dashed rounded-xl cursor-pointer transition-all">
                 {uploading ? (
                   <span className="text-white text-xs">Uploading...</span>
@@ -96,10 +112,19 @@ export default function HeroSection() {
                     <span className="text-white text-xs">Choose MP4 file</span>
                   </>
                 )}
-                <input type="file" accept="video/mp4,video/*" className="hidden" onChange={handleUpload} disabled={uploading} />
+                <input
+                  type="file"
+                  accept="video/mp4,video/*"
+                  className="hidden"
+                  onChange={handleUpload}
+                  disabled={uploading}
+                />
               </label>
               {videoUrl && (
-                <button onClick={removeVideo} className="mt-2 w-full text-xs text-red-400 hover:text-red-300 text-center">
+                <button
+                  onClick={removeVideo}
+                  className="mt-2 w-full text-xs text-red-400 hover:text-red-300 text-center"
+                >
                   Remove current video
                 </button>
               )}
@@ -108,6 +133,7 @@ export default function HeroSection() {
         </div>
       )}
 
+      {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
         <div className="max-w-3xl">
           <motion.div
@@ -127,9 +153,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] mb-6"
           >
-            Enterprise-Grade{" "}
-            <span className="text-primary">Audio Visual</span>{" "}
-            Solutions
+            Enterprise-Grade <span className="text-primary">Audio Visual</span> Solutions
           </motion.h1>
 
           <motion.p
