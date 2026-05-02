@@ -48,10 +48,24 @@ export default function ServiceMaintenance() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`p-8 rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300 ${i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"}`}
+                className={`p-8 rounded-2xl border border-[#cdc9c0] hover:border-[#637480]/40 hover:shadow-lg transition-all duration-300 ${
+                  i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"
+                }`}
               >
-                <h3 className={`text-lg font-heading font-semibold mb-2 ${i % 2 === 1 ? "text-white" : "text-foreground"}`}>{feat.title}</h3>
-                <p className={`text-sm font-body leading-relaxed ${i % 2 === 1 ? "text-white/70" : "text-muted-foreground"}`}>{feat.desc}</p>
+                <h3
+                  className={`text-lg font-heading font-semibold mb-2 ${
+                    i % 2 === 1 ? "text-white" : "text-foreground"
+                  }`}
+                >
+                  {feat.title}
+                </h3>
+                <p
+                  className={`text-sm font-body leading-relaxed ${
+                    i % 2 === 1 ? "text-white/70" : "text-muted-foreground"
+                  }`}
+                >
+                  {feat.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -92,7 +106,12 @@ export default function ServiceMaintenance() {
               <div className="p-5 text-center">Expedited</div>
             </div>
             {slaTable.map((row, i) => (
-              <div key={row.feature} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-white" : "bg-[#f5f2ee]"}`}>
+              <div
+                key={row.feature}
+                className={`grid grid-cols-3 text-sm ${
+                  i % 2 === 0 ? "bg-white" : "bg-[#f5f2ee]"
+                }`}
+              >
                 <div className="p-5 font-medium font-body text-foreground">{row.feature}</div>
                 <div className="p-5 text-center font-body text-muted-foreground">{row.premium}</div>
                 <div className="p-5 text-center font-body text-muted-foreground">{row.expedited}</div>
@@ -134,13 +153,18 @@ export default function ServiceMaintenance() {
               </Link>
             </motion.div>
 
+            {/* ⭐ FIXED IMAGE BELOW */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="/TopazMainVideo.mp4" alt="Service engineer" className="w-full h-[400px] object-cover" />
+              <img
+                src="/AV-Maintenance.jpg"   // <-- your correct photo here
+                alt="Service engineer"
+                className="w-full h-[400px] object-cover"
+              />
             </motion.div>
           </div>
         </div>

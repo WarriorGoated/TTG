@@ -46,13 +46,25 @@ export default function SupplyInstall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
-                className={`relative p-8 rounded-2xl border border-[#cdc9c0] ${i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"}`}
+                className={`relative p-8 rounded-2xl border border-[#cdc9c0] ${
+                  i % 2 === 1 ? "bg-[#637480]" : "bg-[#e3dfd7]"
+                }`}
               >
-                <span className={`absolute top-4 right-4 text-5xl font-heading font-bold ${i % 2 === 1 ? "text-white/10" : "text-primary/5"}`}>
+                <span className={`absolute top-4 right-4 text-5xl font-heading font-bold ${
+                  i % 2 === 1 ? "text-white/10" : "text-primary/5"
+                }`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className={`text-lg font-heading font-semibold mb-2 ${i % 2 === 1 ? "text-white" : "text-foreground"}`}>{step.title}</h3>
-                <p className={`text-sm font-body leading-relaxed ${i % 2 === 1 ? "text-white/70" : "text-muted-foreground"}`}>{step.description}</p>
+                <h3 className={`text-lg font-heading font-semibold mb-2 ${
+                  i % 2 === 1 ? "text-white" : "text-foreground"
+                }`}>
+                  {step.title}
+                </h3>
+                <p className={`text-sm font-body leading-relaxed ${
+                  i % 2 === 1 ? "text-white/70" : "text-muted-foreground"
+                }`}>
+                  {step.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -103,14 +115,21 @@ export default function SupplyInstall() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* ⭐ FIXED IMAGE BELOW */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="/TopazMainVideo.mp4" alt="AV Installation" className="w-full h-[400px] object-cover" />
+              <img
+                src="/Craig-Install.png"   // <-- your correct photo here
+                alt="AV Installation"
+                className="w-full h-[400px] object-cover"
+              />
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -134,6 +153,7 @@ export default function SupplyInstall() {
                 ))}
               </ul>
             </motion.div>
+
           </div>
         </div>
       </section>

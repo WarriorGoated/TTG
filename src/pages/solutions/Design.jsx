@@ -72,7 +72,7 @@ export default function Design() {
             viewport={{ once: true }}
             className="text-lg md:text-xl font-body text-foreground/70 max-w-3xl mx-auto leading-relaxed"
           >
-            Every TOPAZ design is produced by our<span className="font-semibold text-foreground">qualified solutions architects</span> We've delivered over <span className="font-semibold text-foreground">3,000 projects</span> across the UK and internationally.
+            Every TOPAZ design is produced by our<span className="font-semibold text-foreground"> qualified solutions architects</span>. We've delivered over <span className="font-semibold text-foreground">3,000 projects</span> across the UK and internationally.
           </motion.p>
         </div>
       </section>
@@ -104,13 +104,19 @@ export default function Design() {
                 ))}
               </ul>
             </motion.div>
+
+            {/* ⭐ FIXED IMAGE BELOW */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="/TopazMainVideo.mp4" alt="AV Design work" className="w-full h-[400px] object-cover" />
+              <img
+                src="/AV-Design.jpg"   // <-- your correct photo here
+                alt="AV Design work"
+                className="w-full h-[400px] object-cover"
+              />
             </motion.div>
           </div>
         </div>
