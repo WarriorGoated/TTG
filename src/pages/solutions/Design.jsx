@@ -110,7 +110,7 @@ export default function Design() {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="/Images/AV-Design.jpg" alt="AV Design work" className="w-full h-[400px] object-contain" />
+              <img src="/TopazMainVideo.mp4" alt="AV Design work" className="w-full h-[400px] object-cover" />
             </motion.div>
           </div>
         </div>

@@ -13,7 +13,7 @@ const solutions = [
     description: "From concept to completion, our design services deliver custom technology solutions tailored to your exact requirements and specifications.",
     href: "/solutions/design",
     video: "", // e.g. "/Videos/Buildings.mp4"
-    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/713e0d4ae_generated_89c8ed89.png",
+    image: "/TopazMainVideo.mp4",
   },
   {
     icon: Wrench,
@@ -21,7 +21,7 @@ const solutions = [
     description: "We provide and install top-quality technology solutions, ensuring professional setup and configuration for optimal performance and reliability.",
     href: "/solutions/supply-install",
     video: "", // e.g. "/Videos/ConstructionVideo.mp4"
-    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/23ff73efd_generated_501bd931.png",
+    image: "/TopazMainVideo.mp4",
   },
   {
     icon: Settings,
@@ -29,7 +29,7 @@ const solutions = [
     description: "Comprehensive support and maintenance services to keep your systems running smoothly, with fast response times and expert technical assistance.",
     href: "/solutions/service-maintenance",
     video: "", // e.g. "/Videos/Video-Conferencing.mp4"
-    image: "https://media.base44.com/images/public/69f35c96ab37fb0292b7fd5f/898af141a_generated_b3a48ee0.png",
+    image: "/TopazMainVideo.mp4",
   },
 ];
 

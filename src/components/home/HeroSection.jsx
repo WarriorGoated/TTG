@@ -51,7 +51,7 @@ export default function HeroSection() {
           </video>
         ) : (
           <img
-            src="/Videos/TopazMainVideo.mp4"
+            src="/TopazMainVideo.mp4"
             alt="Modern AV conference room"
             className="w-full h-full object-cover"
           />

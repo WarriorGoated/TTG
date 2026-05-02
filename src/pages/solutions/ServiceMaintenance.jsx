@@ -140,7 +140,7 @@ export default function ServiceMaintenance() {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src="/Images/AV-Maintenance.jpg" alt="Service engineer" className="w-full h-[400px] object-cover" />
+              <img src="/TopazMainVideo.mp4" alt="Service engineer" className="w-full h-[400px] object-cover" />
             </motion.div>
           </div>
         </div>
