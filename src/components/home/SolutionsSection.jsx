@@ -25,7 +25,7 @@ const solutions = [
     description:
       "We provide and install top-quality technology solutions, ensuring professional setup and configuration for optimal performance and reliability.",
     href: "/solutions/supply-install",
-    video: "/ConstructionVideo.mp4",
+    video: "/ConstrctionVideo.mp4",
     image: "/fallback-install.jpg",
   },
   {
